@@ -1,0 +1,52 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div style="width:90%;margin:0 auto"> 
+        <table id="MyTable">
+            <thead>
+                <tr>
+                    <th>Id_Paciente</th>  
+                    <th>Nombre</th>  
+                    <th>Apellido</th>  
+                    <th>Edad</th>  
+                    <th>Correo</th>  
+                </tr>
+            </thead>
+        </table>
+    </div>
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(function () {
+            //alert('Jquery funcioneando!');
+            var Table = $('#MyTable').DataTable({
+                'ajax':
+                {
+                    'url': '/Home/MostData',
+                    'type': 'GET',
+                    'datatype':'json'
+                },
+                'columns':
+                [
+                    { 'data': 'Id_Pa', 'autoWidth': true },
+                    { 'data': 'Nombre', 'autoWidth': true },
+                    { 'data': 'Apelli', 'autoWidth': true },
+                    { 'data': 'Edad', 'autoWidth': true },
+                    { 'data': 'Correo', 'autoWidth': true }
+                ]
+            })
+        });
+    </script>
+</body>
+</html>
